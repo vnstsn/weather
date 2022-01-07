@@ -21,6 +21,6 @@ jobs:
       - name: Tests unitaires
         run: npm test
       - name: tests coverage
-        run: npm run coverage
+        run: npm run cover
 
 
