@@ -10,7 +10,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
     steps:
-      - name: Récupértion du repo
+      - name: Récupération du repo
         uses: actions/checkout@v2
       - name: Récupération de Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -18,7 +18,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installation des dépendances
         run: npm ci
-      - run: npm run build --if present
+      - run: npm run build
       - run: npm test
   docker:
     needs: tests-unitaires
@@ -38,7 +38,8 @@ jobs:
       - name: build et push mon image docker
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./
+          file: ./Dockerfile
           push: true
           tags: vnstsn/weather:latest
 
