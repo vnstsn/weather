@@ -42,5 +42,5 @@ jobs:
         with:
           context: .
           push: true
-          image: vnstsn/weather:latest
+          tags: vnstsn/weather:latest
 
