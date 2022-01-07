@@ -1,6 +1,8 @@
 name: Workflow unit test & push
 on:
   push:
+    branches:
+      - develop
 jobs:
   tests-unitaires:
     runs-on: ubuntu-latest
@@ -15,6 +17,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Installation des dépendances
-        run: npm ci
-      - run: npm run build --if present
-      - run: npm test
+        run: npm i
+      - name: Tests unitaires
+        run: npm test
+      - name: tests coverage
+        run: npm run coverage
+
+
